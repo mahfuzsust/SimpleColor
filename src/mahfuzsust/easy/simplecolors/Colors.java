@@ -149,4 +149,23 @@ public class Colors {
 	public static Color WhiteSmoke = new Color(0xF5F5F5);
 	public static Color Yellow = new Color(0xFFFF00);
 	public static Color YellowGreen = new Color(0x9ACD32);
+	
+	/**
+	 * @param hex starts with '#'
+	 * @param hex length must be equal to 7 with #
+	 * @return Color || null
+	 */
+	public static Color getColorFromHexCode(String hex) {
+		
+		if(hex.startsWith("#") && hex.length() == 7) {
+			hex.replaceFirst("#", "0x");
+			try {
+				return new Color(Integer.decode(hex));
+			} catch (Exception e) {
+				return null;
+			}
+			
+		}
+		return null;
+	}
 }
